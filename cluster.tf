@@ -3,13 +3,13 @@ resource "aws_docdb_cluster" "docdb" {
   engine                  = "docdb"
   master_username         = "admin1"
   master_password         = "roboshop1"
-  # true only during in prod, we will take a snapshot and that time value wiil bw false
+# true only during in prod, we will take a snapshot and that time value wiil bw false
   skip_final_snapshot     = true
 }
 #creates subnet group 
 resource "aws_docdb_subnet_group" "docdb" {
-  name       = "main"
-  subnet_ids = [aws_subnet.frontend.id, aws_subnet.backend.id]
+  name       = "roboshop-mongo-${var.ENV}"
+  subnet_ids = data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNET_IDS
 
   tags = {
     Name = "My docdb subnet group"
