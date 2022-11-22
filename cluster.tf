@@ -2,7 +2,7 @@
 #  cluster_identifier      = "roboshop-${var.ENV}"
 #  engine                  = "docdb"
 #  master_username         = "admin1"
-3  master_password         = "roboshop1"
+#  master_password         = "roboshop1"
 # true only during in prod, we will take a snapshot and that time value wiil bw false
 #  skip_final_snapshot     = true
 #}
